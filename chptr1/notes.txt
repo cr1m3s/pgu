@@ -1,0 +1,34 @@
+-- create obj file:
+as exit.s -o exit.o
+
+exit.o:     file format elf64-x86-64
+
+SYMBOL TABLE:
+0000000000000000 g       .text	0000000000000000 _start
+
+
+-- link obj file with external libs
+ld exit.o -o exit
+
+exit:     file format elf64-x86-64
+
+SYMBOL TABLE:
+0000000000401000 g       .text	0000000000000000 _start
+0000000000402000 g       .text	0000000000000000 __bss_start
+0000000000402000 g       .text	0000000000000000 _edata
+0000000000402000 g       .text	0000000000000000 _end
+
+-- gen purpose registers:
+• %eax - is always required to be loaded with system call nmber
+• %ebx - is required to be loaded with the exit status
+• %ecx
+• %edx
+• %edi
+• %esi
+
+-- spec purpose registers:
+• %ebp
+• %esp
+• %eip
+• %eflags
+
