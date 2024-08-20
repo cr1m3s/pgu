@@ -19,7 +19,7 @@ SYMBOL TABLE:
 0000000000402000 g       .text	0000000000000000 _end
 
 -- gen purpose registers:
-• %eax - is always required to be loaded with system call nmber
+• %eax - is always required to be loaded with system call number
 • %ebx - is required to be loaded with the exit status
 • %ecx
 • %edx
@@ -32,3 +32,4 @@ SYMBOL TABLE:
 • %eip
 • %eflags
 
+-- 255 is the largest allowed exit status
