@@ -45,3 +45,7 @@ addressing mode, and therefore we get the value pointed to by %esp.
 movl %ebp, %esp
 popl %ebp
 ret
+
+-- 32-bits mode for asm and linker:
+as --32 power.s -o power.o
+ld -m elf_i386 power.o -o power.out
