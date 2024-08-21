@@ -33,3 +33,15 @@ SYMBOL TABLE:
 • %eflags
 
 -- 255 is the largest allowed exit status
+-- The stack register, %esp, always contains a pointer to the current 
+top of the stack, wherever it is.
+
+
+movl (%esp), %eax
+-- Putting %esp in parenthesis causes the computer to go to indirect
+addressing mode, and therefore we get the value pointed to by %esp.
+
+-- To return from the function you have to do the following:
+movl %ebp, %esp
+popl %ebp
+ret

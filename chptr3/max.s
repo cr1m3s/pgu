@@ -14,25 +14,25 @@ _start:
     movl data_items(, %edi, 4), %eax
     movl %eax, %ebx
 
-		movl $data_items, %ecx
-		movl count, %edx
-		imul $4, %edx
-		addl %ecx, %edx
+	movl $data_items, %ecx
+	movl count, %edx
+	imul $4, %edx
+	addl %ecx, %edx
 
 start_loop:
-		cmpl %ecx, %edx
-		je loop_exit
+	cmpl %ecx, %edx
+	je loop_exit
 #		cmpl %edx, %edi
 #		je loop_exit
 
     incl %edi
     movl data_items(,%edi, 4), %eax
-		add $4, %ecx
+	add $4, %ecx
 
 #		cmpl $255, %eax
-#    je loop_exit
+#       je loop_exit
 
-		cmpl %ebx, %eax
+	cmpl %ebx, %eax
     jle start_loop
 
     movl %eax, %ebx
