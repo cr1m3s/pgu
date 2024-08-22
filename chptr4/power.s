@@ -3,8 +3,8 @@
 
 .globl _start
 _start:
+    pushl $0
     pushl $3
-    pushl $2
     call power
 		add $8, %esp
 		push %eax
@@ -26,8 +26,12 @@ _start:
             movl %ebx, -4(%ebp)         # save current result in local storage
 
             power_loop_start:
-                cmpl $1, %ecx           # if power = 1
+                cmpl $0, %ecx
+								je zero_power
+
+								cmpl $1, %ecx           # if power = 1
                 je end_power          # jump end of function
+
 
                 movl -4(%ebp), %eax     # save current result in temp storage
                 imull %ebx, %eax        # current result = current result * number
@@ -43,3 +47,8 @@ _start:
             movl %ebp, %esp
             popl %ebp
             ret
+				zero_power:
+						movl $1, %eax
+						movl %ebp, %esp
+						popl %ebp
+						ret
